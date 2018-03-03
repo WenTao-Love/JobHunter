@@ -1,8 +1,11 @@
 package org.codingwater.model;
 
+import org.beetl.sql.core.annotatoin.Table;
+
 /**
  * Created by water on 4/14/16.
  */
+@Table(name="t_position")
 public class BaseJobInfo {
 
   private String positionId;

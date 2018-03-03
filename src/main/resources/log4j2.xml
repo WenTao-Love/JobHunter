@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n"/>
+    </Console>
+    <RollingFile name="info" fileName="D:/logs/jobhunter-info.log" filePattern="D:/logs/jobhunter-info-%d{yyyy-MM-dd}-%i.log" immediateFlush="false" append="true">
+      <!--只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+      <Filters>
+        <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+        <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+      </Filters>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="10 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="3"/>
+    </RollingFile>
+    <RollingFile name="debug" fileName="D:/logs/jobhunter-debug.log" filePattern="D:/logs/jobhunter-debug-%d{yyyy-MM-dd}-%i.log" immediateFlush="false" append="true">
+      <!--只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+      <Filters>
+        <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
+        <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+      </Filters>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="20 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="3"/>
+    </RollingFile>
+    <RollingFile name="warn" fileName="D:/logs/jobhunter-warn.log" filePattern="D:/logs/jobhunter-warn-%d{yyyy-MM-dd}-%i.log" immediateFlush="true" append="true">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n"/>
+      <Filters>
+        <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+        <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+      </Filters>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="10 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="3"/>
+    </RollingFile>
+    <RollingFile name="error" fileName="D:/logs/jobhunter-error.log" filePattern="D:/logs/jobhunter-error-%d{yyyy-MM-dd}-%i.log" immediateFlush="true" append="true">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n"/>
+      <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="10 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="3"/>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="console" level="TRACE"/>
+      <AppenderRef ref="debug" level="DEBUG"/>
+      <AppenderRef ref="info" level="INFO"/>
+      <AppenderRef ref="warn" level="WARN"/>
+      <AppenderRef ref="error" level="ERROR"/>
+    </Root>
+  </Loggers>
+</Configuration>
