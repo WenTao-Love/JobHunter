@@ -1,37 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.codingwater</groupId>
-    <artifactId>jobhunter</artifactId>
-    <packaging>war</packaging>
-    <version>1.0</version>
-    <name>jobhunter Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.codingwater</groupId>
+	<artifactId>jobhunter</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	<name>jobhunter Maven Webapp</name>
+	<url>http://maven.apache.org</url>
 
-    <properties>
-    	<java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- spring版本号 -->
-        <spring.version>5.0.4.RELEASE</spring.version>
-        <!-- mybatis版本号 已经用beetlsql来代替-->
-        <mybatis.version>3.4.5</mybatis.version>
-        <beetlsql.version>2.10.13</beetlsql.version>
-        <beetl-framework-starter.version>1.1.40.RELEASE</beetl-framework-starter.version>
-        <hutool.version>4.0.6</hutool.version>
-        <druid.version>1.1.8</druid.version>
-        <jsoup.version>1.11.2</jsoup.version>
-        <modelmapper.version>1.1.2</modelmapper.version>
-        <guava.version>24.0-jre</guava.version>
-    </properties>
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- spring版本号 -->
+		<spring.version>5.0.4.RELEASE</spring.version>
+		<!-- mybatis版本号 已经用beetlsql来代替 -->
+		<mybatis.version>3.4.5</mybatis.version>
+		<beetlsql.version>2.10.13</beetlsql.version>
+		<beetl-framework-starter.version>1.1.40.RELEASE</beetl-framework-starter.version>
+		<hutool.version>4.0.6</hutool.version>
+		<druid.version>1.1.8</druid.version>
+		<jsoup.version>1.11.2</jsoup.version>
+		<modelmapper.version>1.1.2</modelmapper.version>
+		<guava.version>24.0-jre</guava.version>
+	</properties>
 	<parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
-    </parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.0.RELEASE</version>
+	</parent>
 
-    <dependencies>
-        <dependency>
+	<dependencies>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<exclusions>
@@ -44,7 +43,7 @@
 					<artifactId>logback-classic</artifactId>
 				</exclusion>
 			</exclusions>
-        </dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
@@ -72,106 +71,99 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-        <!-- mysql驱动包 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
 
-        <!-- 阿里巴巴数据源包 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
+		<!-- mysql驱动包 -->
 		<dependency>
-		    <groupId>com.ibeetl</groupId>
-		    <artifactId>beetlsql</artifactId>
-		    <version>${beetlsql.version}</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		<dependency>
-		    <groupId>com.ibeetl</groupId>
-		    <artifactId>beetl-framework-starter</artifactId>
-		    <version>${beetl-framework-starter.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.antlr</groupId>
-		    <artifactId>antlr4-runtime</artifactId>
-		    <version>4.7.1</version>
-		</dependency>
-		<dependency>
-		    <groupId>cn.hutool</groupId>
-		    <artifactId>hutool-all</artifactId>
-		    <version>${hutool.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.jsoup</groupId>
-		    <artifactId>jsoup</artifactId>
-		    <version>${jsoup.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.modelmapper</groupId>
-		    <artifactId>modelmapper</artifactId>
-		    <version>${modelmapper.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <version>${guava.version}</version>
-		</dependency>
-    </dependencies>
-    <repositories>
-        <repository>
-            <id>aliyunmaven</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-    <build>
-        <finalName>jobhunter</finalName>
 
-        <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-                <!--<version>2.17</version>-->
-                <!--<configuration>-->
-                    <!--<configLocation>src/main/resources/google_checks_duitang.xml</configLocation>-->
-                    <!--<consoleOutput>true</consoleOutput>-->
-                    <!--<failsOnError>true</failsOnError>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>checkstyle</id>-->
-                        <!--<phase>validate</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>check</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+		<!-- 阿里巴巴数据源包 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibeetl</groupId>
+			<artifactId>beetlsql</artifactId>
+			<version>${beetlsql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibeetl</groupId>
+			<artifactId>beetl-framework-starter</artifactId>
+			<version>${beetl-framework-starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4-runtime</artifactId>
+			<version>4.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>${jsoup.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${modelmapper.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>aliyunmaven</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<build>
+		<finalName>jobhunter</finalName>
 
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.8.v20171121</version>
-            </plugin>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!--<plugin> -->
+			<!--<groupId>org.apache.maven.plugins</groupId> -->
+			<!--<artifactId>maven-checkstyle-plugin</artifactId> -->
+			<!--<version>2.17</version> -->
+			<!--<configuration> -->
+			<!--<configLocation>src/main/resources/google_checks_duitang.xml</configLocation> -->
+			<!--<consoleOutput>true</consoleOutput> -->
+			<!--<failsOnError>true</failsOnError> -->
+			<!--</configuration> -->
+			<!--<executions> -->
+			<!--<execution> -->
+			<!--<id>checkstyle</id> -->
+			<!--<phase>validate</phase> -->
+			<!--<goals> -->
+			<!--<goal>check</goal> -->
+			<!--</goals> -->
+			<!--</execution> -->
+			<!--</executions> -->
+			<!--</plugin> -->
+			<!-- <plugin> <groupId>org.eclipse.jetty</groupId> <artifactId>jetty-maven-plugin</artifactId> 
+				<version>9.4.8.v20171121</version> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-compiler-plugin</artifactId> <configuration> <source>1.8</source> 
+				<target>1.8</target> </configuration> </plugin> -->
+		</plugins>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-
-    </build>
+	</build>
 </project>
