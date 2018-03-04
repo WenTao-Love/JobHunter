@@ -1,17 +1,15 @@
 package org.codingwater.serviceimpl;
 
+import java.util.Calendar;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.codingwater.dao.BaseJobInfoDAO;
 import org.codingwater.model.BaseJobInfo;
 import org.codingwater.model.SalaryQueryResult;
 import org.codingwater.service.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jca.cci.core.InteractionCallback;
 import org.springframework.stereotype.Service;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by water on 4/25/16.
@@ -20,7 +18,7 @@ import java.util.regex.Pattern;
 public class ReportServiceImpl implements IReportService {
 
   @Autowired
-  BaseJobInfoDAO baseJobInfoDAO;
+  private BaseJobInfoDAO baseJobInfoDAO;
 
   /**
    * 计算平均工资
@@ -35,8 +33,10 @@ public class ReportServiceImpl implements IReportService {
 
     //最终能得出的结论是:在所选城市,所属工种,以及所属工资经验中,查询了多少条数据,得出的平均工资是多少.
     //比如,上海,Java,1-3年,查到多少数据.平均工资多少
+    StringBuilder sb = new StringBuilder();
+    sb.append("select * from t_position where city=? and work_year=? and position_name like ?");
     List<BaseJobInfo> jobInfoList =
-        baseJobInfoDAO.queryPositionsWithCondition(city, keyword, workYear);
+        baseJobInfoDAO.execute(sb.toString(), city,workYear,keyword);
 
     System.out.println("begins at : " + Calendar.getInstance().getTimeInMillis());
     int totalCount = jobInfoList.size();
